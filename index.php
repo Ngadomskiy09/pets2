@@ -18,5 +18,29 @@ $f3->route('GET /', function () {
     //echo $views->render("views/home.html");
 });
 
+$f3->route('GET /@item', function($f3, $params){
+    //var_dump($params);
+    $item = $params['item'];
+
+    switch($item) {
+        case 'chicken':
+            echo "<p>Cluck</p>";
+            break;
+        case 'dog':
+            echo "<p>woof</p>";
+            break;
+        case 'horse':
+            echo "<p>neigh</p>";
+            break;
+        case 'cat':
+            echo "<p>meow</p>";
+            break;
+        case 'dino':
+            echo "<p>rwar</p>";
+            break;
+        default:
+            $f3->error(404);
+    }
+});
 // Run F3
 $f3->run();
