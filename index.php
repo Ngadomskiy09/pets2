@@ -18,6 +18,20 @@ $f3->route('GET /', function () {
     //echo $views->render("views/home.html");
 });
 
+$f3->route('POST /order2', function() {
+    //var_dump($_POST);
+    $_SESSION['pets'] = $_POST['pets'];
+    $view = new Template();
+    echo $view->render('views/form1.html');
+});
+
+$f3->route('POST /results', function() {
+    //var_dump($_POST);
+    $_SESSION['pets'] = $_POST['pets'];
+    $view = new Template();
+    echo $view->render('views/results.html');
+});
+
 $f3->route('GET /@item', function($f3, $params){
     //var_dump($params);
     $item = $params['item'];
