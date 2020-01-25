@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // turn on error reporting
 ini_set('display_errors', 1);
@@ -18,16 +19,21 @@ $f3->route('GET /', function () {
     //echo $views->render("views/home.html");
 });
 
-$f3->route('POST /order2', function() {
-    //var_dump($_POST);
-    $_SESSION['pets'] = $_POST['pets'];
+$f3->route('GET /order', function() {
     $view = new Template();
     echo $view->render('views/form1.html');
 });
 
+$f3->route('POST /order2', function() {
+//    var_dump($_POST);
+    $_SESSION['pets'] = $_POST['animalName'];
+    $view = new Template();
+    echo $view->render('views/form2.html');
+});
+
 $f3->route('POST /results', function() {
-    //var_dump($_POST);
-    $_SESSION['pets'] = $_POST['pets'];
+//    var_dump($_POST);
+    $_SESSION['pets2'] = $_POST['color'];
     $view = new Template();
     echo $view->render('views/results.html');
 });
